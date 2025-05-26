@@ -1,4 +1,4 @@
-synckeys
+bt-synckeys
 ---
 Python script to sync Bluetooth pairing keys from Windows to your Linux installations.
 
@@ -38,9 +38,9 @@ sudo cp -r /var/lib/bluetooth/<adapter>/<in-linux-paired-MAC> /var/lib/bluetooth
   - Debian/Ubuntu: `sudo apt install chntpw`
 
 This method requires at least read-only access to your Windows drive in Linux.
-- Run the `synckeys.py` Python 3 script with **root** or **sudo**:
+- Run the `bt-synckeys.py` Python 3 script with **root** or **sudo**:
 ```
-sudo ./synckeys.py -w /path/to/windows/drive/root
+sudo ./bt-synckeys.py -w /path/to/windows/drive/root
 ```
 The root path should be the root of your Windows drive, i.e. there's a `Windows` folder in it.
 - Follow the prompts.
@@ -66,9 +66,9 @@ psexec -s -i regedit /e c:\keydump.reg HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\S
 - Reboot into your Linux system.
 - Copy the `keydump.reg` file to an accessible location in your Linux filesystem and reboot your PC again to linux.
 - Open a terminal and navigate to the location where `synckeys.py` is located.
-- Run the `synckeys.py` Python 3 script with **root** or **sudo**:
+- Run the `bt-synckeys.py` Python 3 script with **root** or **sudo**:
 ```
-sudo ./synckeys.py -r /path/to/keydump.reg
+sudo ./bt-synckeys.py -r /path/to/keydump.reg
 ```
 - The adapters and devices from the key dump will be compared to the pairing in Linux and if a difference is detected, it will prompt you to update the keys. You can choose Yes or No (default). If you choose `Yes`, a timestamped backup file is created in the `/var/lib/bluetooth/{ADAPTER_MAC}/{DEVICE_MAC}` directory before the update is performed.
 ```
